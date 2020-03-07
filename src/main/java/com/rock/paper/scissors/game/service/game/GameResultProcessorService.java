@@ -1,4 +1,4 @@
-package com.rock.paper.scissors.game.service.impl;
+package com.rock.paper.scissors.game.service.game;
 
 import com.rock.paper.scissors.game.model.GameResult;
 import com.rock.paper.scissors.game.model.GameState;
@@ -24,5 +24,4 @@ public class GameResultProcessorService implements GameResultProcessor {
         strategy.put(GameState.LOOSE, (lostPlayer, wonPlayer) -> GameResult.of(GameState.LOOSE, wonPlayer, lostPlayer));
         return strategy;
     }
-
 }

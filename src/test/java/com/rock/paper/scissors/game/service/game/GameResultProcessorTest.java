@@ -2,7 +2,6 @@ package com.rock.paper.scissors.game.service.game;
 
 import com.rock.paper.scissors.game.model.GameState;
 import com.rock.paper.scissors.game.service.GameResultProcessor;
-import com.rock.paper.scissors.game.service.impl.GameResultProcessorService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 

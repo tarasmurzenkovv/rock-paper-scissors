@@ -1,31 +1,28 @@
-package com.rock.paper.scissors.game.service.impl;
+package com.rock.paper.scissors.game.service.game;
 
 import com.rock.paper.scissors.game.model.GameResult;
 import com.rock.paper.scissors.game.model.GameState;
 import com.rock.paper.scissors.game.model.Pair;
 import com.rock.paper.scissors.game.model.PlayerAction;
 import com.rock.paper.scissors.game.service.Game;
+import com.rock.paper.scissors.game.service.GameResultProcessor;
 import com.rock.paper.scissors.game.service.PlayerActionSimulator;
+import lombok.RequiredArgsConstructor;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
+@RequiredArgsConstructor
 public class GameService implements Game {
     private static final Map<Pair<PlayerAction, PlayerAction>, GameState> STRATEGY = GameService.build();
+    private final GameResultProcessor gameResultProcessor;
 
     @Override
     public GameResult execute(PlayerActionSimulator firstPlayer, PlayerActionSimulator secondPlayer) {
         var actionOfFirstPlayer = firstPlayer.generate();
         var actionOfSecondPlayer = secondPlayer.generate();
         var gameState = STRATEGY.get(Pair.of(actionOfFirstPlayer, actionOfSecondPlayer));
-        if (gameState == GameState.DRAW) {
-            return GameResult.of(gameState, List.of(firstPlayer.name(), secondPlayer.name()));
-        } else if (gameState == GameState.LOOSE) {
-            return GameResult.of(gameState, secondPlayer.name(), firstPlayer.name());
-        } else {
-            return GameResult.of(gameState, firstPlayer.name(), secondPlayer.name());
-        }
+        return gameResultProcessor.process(gameState, secondPlayer.name(), firstPlayer.name());
     }
 
     private static Map<Pair<PlayerAction, PlayerAction>, GameState> build() {
