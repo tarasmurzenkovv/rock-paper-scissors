@@ -6,6 +6,6 @@ import com.rock.paper.scissors.game.service.ActionGenerator;
 public class NonRandomActionGenerator implements ActionGenerator {
     @Override
     public PlayerAction generate() {
-        return null;
+        return PlayerAction.ROCK;
     }
 }
