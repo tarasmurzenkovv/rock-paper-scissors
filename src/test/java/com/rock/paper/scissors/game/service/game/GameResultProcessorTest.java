@@ -30,4 +30,14 @@ public class GameResultProcessorTest {
                 .hasFieldOrPropertyWithValue("wonPlayer", null)
                 .hasFieldOrPropertyWithValue("drawPlayers", List.of("1", "2"));
     }
+
+    @Test
+    public void shouldProperlyBuildForLooseGameState() {
+        Assertions.assertThat(sut.process(GameState.LOOSE, "1", "2"))
+                .isNotNull()
+                .hasFieldOrPropertyWithValue("gameState", GameState.LOOSE)
+                .hasFieldOrPropertyWithValue("lostPlayer", "1")
+                .hasFieldOrPropertyWithValue("wonPlayer", "2")
+                .hasFieldOrPropertyWithValue("drawPlayers", null);
+    }
 }
