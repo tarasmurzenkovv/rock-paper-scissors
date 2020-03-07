@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="rock-paper-sc.main" target="1.8" />
+      <module name="rock-paper-sc.test" target="1.8" />
+      <module name="rock-paper-scissors.main" target="11" />
+      <module name="rock-paper-scissors.test" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
