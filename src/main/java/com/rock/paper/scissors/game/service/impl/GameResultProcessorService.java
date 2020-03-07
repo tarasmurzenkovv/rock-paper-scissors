@@ -5,6 +5,7 @@ import com.rock.paper.scissors.game.model.GameState;
 import com.rock.paper.scissors.game.service.GameResultProcessor;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.BiFunction;
 
@@ -19,6 +20,7 @@ public class GameResultProcessorService implements GameResultProcessor {
     private static Map<GameState, BiFunction<String, String, GameResult>> build() {
         var strategy = new HashMap<GameState, BiFunction<String, String, GameResult>>();
         strategy.put(GameState.WIN, (lostPlayer, wonPlayer) -> GameResult.of(GameState.WIN, lostPlayer, wonPlayer));
+        strategy.put(GameState.DRAW, (lostPlayer, wonPlayer) -> GameResult.of(GameState.DRAW, List.of(lostPlayer, wonPlayer)));
         return strategy;
     }
 
