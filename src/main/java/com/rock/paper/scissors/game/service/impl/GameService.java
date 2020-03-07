@@ -14,7 +14,8 @@ public class GameService implements Game {
             return GameState.DRAW;
         } else if (actionOfSecondPlayer == PlayerAction.SCISSORS) {
             return GameState.WIN;
+        } else {
+            return GameState.LOOSE;
         }
-        return null;
     }
 }

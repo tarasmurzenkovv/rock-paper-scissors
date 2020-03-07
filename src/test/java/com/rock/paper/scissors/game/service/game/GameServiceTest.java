@@ -27,6 +27,14 @@ public class GameServiceTest {
     }
 
     @Test
+    public void whenOnePlayerReturnsRockAndTheSecondPlayerScissorThenThisIsWinForSecondPlayer() {
+        Mockito.when(fixedRangeRandomValueGenerator.get()).thenReturn(2);
+        Assertions.assertThat(game.execute(firstPlayer, secondPlayer))
+                .isNotNull()
+                .isEqualTo(GameState.LOOSE);
+    }
+
+    @Test
     public void whenOnePlayerReturnsRockAndTheSecondPlayerScissorThenThisIsWinForFirstPlayer() {
         Mockito.when(fixedRangeRandomValueGenerator.get()).thenReturn(3);
         Assertions.assertThat(game.execute(firstPlayer, secondPlayer))
