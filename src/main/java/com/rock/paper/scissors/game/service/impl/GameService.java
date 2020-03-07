@@ -23,8 +23,9 @@ public class GameService implements Game {
             return GameResult.of(result, null, null, List.of(firstPlayer.name(), secondPlayer.name()));
         } else if (result == GameState.LOOSE) {
             return GameResult.of(result, secondPlayer.name(), firstPlayer.name(), null);
+        } else {
+            return GameResult.of(result, firstPlayer.name(), secondPlayer.name(), null);
         }
-        return null;
     }
 
     private static Map<Pair<PlayerAction, PlayerAction>, GameState> build() {
