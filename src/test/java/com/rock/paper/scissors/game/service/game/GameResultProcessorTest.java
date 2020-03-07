@@ -6,6 +6,8 @@ import com.rock.paper.scissors.game.service.impl.GameResultProcessorService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 public class GameResultProcessorTest {
     private final GameResultProcessor sut = new GameResultProcessorService();
 
@@ -17,5 +19,15 @@ public class GameResultProcessorTest {
                 .hasFieldOrPropertyWithValue("lostPlayer", "1")
                 .hasFieldOrPropertyWithValue("wonPlayer", "2")
                 .hasFieldOrPropertyWithValue("drawPlayers", null);
+    }
+
+    @Test
+    public void shouldProperlyBuildForDrawGameState() {
+        Assertions.assertThat(sut.process(GameState.DRAW, "1", "2"))
+                .isNotNull()
+                .hasFieldOrPropertyWithValue("gameState", GameState.DRAW)
+                .hasFieldOrPropertyWithValue("lostPlayer", null)
+                .hasFieldOrPropertyWithValue("wonPlayer", null)
+                .hasFieldOrPropertyWithValue("drawPlayers", List.of("1", "2"));
     }
 }
