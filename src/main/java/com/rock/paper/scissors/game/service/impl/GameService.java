@@ -1,5 +1,6 @@
 package com.rock.paper.scissors.game.service.impl;
 
+import com.rock.paper.scissors.game.model.GameResult;
 import com.rock.paper.scissors.game.model.GameState;
 import com.rock.paper.scissors.game.model.Pair;
 import com.rock.paper.scissors.game.model.PlayerAction;
@@ -7,16 +8,22 @@ import com.rock.paper.scissors.game.service.Game;
 import com.rock.paper.scissors.game.service.PlayerActionSimulator;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class GameService implements Game {
     private static final Map<Pair<PlayerAction, PlayerAction>, GameState> STRATEGY = GameService.build();
 
     @Override
-    public GameState execute(PlayerActionSimulator firstPlayer, PlayerActionSimulator secondPlayer) {
+    public GameResult execute(PlayerActionSimulator firstPlayer, PlayerActionSimulator secondPlayer) {
         var actionOfFirstPlayer = firstPlayer.generate();
         var actionOfSecondPlayer = secondPlayer.generate();
-        return STRATEGY.get(Pair.of(actionOfFirstPlayer, actionOfSecondPlayer));
+        var result = STRATEGY.get(Pair.of(actionOfFirstPlayer, actionOfSecondPlayer));
+
+        if (result == GameState.DRAW) {
+            return GameResult.of(result, null, null, List.of(firstPlayer.name(), secondPlayer.name()));
+        }
+        return null;
     }
 
     private static Map<Pair<PlayerAction, PlayerAction>, GameState> build() {

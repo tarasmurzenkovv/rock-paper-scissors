@@ -18,6 +18,6 @@ public class RandomPlayerActionSimulator implements PlayerActionSimulator {
 
     @Override
     public String name() {
-        return null;
+        return playerName;
     }
 }
