@@ -25,4 +25,12 @@ public class GameServiceTest {
                 .isNotNull()
                 .isEqualTo(GameState.DRAW);
     }
+
+    @Test
+    public void whenOnePlayerReturnsRockAndTheSecondPlayerScissorThenThisIsWinForFirstPlayer() {
+        Mockito.when(fixedRangeRandomValueGenerator.get()).thenReturn(3);
+        Assertions.assertThat(game.execute(firstPlayer, secondPlayer))
+                .isNotNull()
+                .isEqualTo(GameState.WIN);
+    }
 }
