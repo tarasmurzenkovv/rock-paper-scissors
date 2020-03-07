@@ -3,9 +3,13 @@ package com.rock.paper.scissors.game.service.impl;
 import com.rock.paper.scissors.game.model.PlayerAction;
 import com.rock.paper.scissors.game.service.ActionGenerator;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class RandomActionGenerator implements ActionGenerator {
+
     @Override
     public PlayerAction generate() {
-        return null;
+        int ordinalNumberOfPlayerAction = ThreadLocalRandom.current().nextInt(1, 4);
+        return PlayerAction.from(ordinalNumberOfPlayerAction);
     }
 }
