@@ -18,13 +18,13 @@ public class GameService implements Game {
     public GameResult execute(PlayerActionSimulator firstPlayer, PlayerActionSimulator secondPlayer) {
         var actionOfFirstPlayer = firstPlayer.generate();
         var actionOfSecondPlayer = secondPlayer.generate();
-        var result = STRATEGY.get(Pair.of(actionOfFirstPlayer, actionOfSecondPlayer));
-        if (result == GameState.DRAW) {
-            return GameResult.of(result, null, null, List.of(firstPlayer.name(), secondPlayer.name()));
-        } else if (result == GameState.LOOSE) {
-            return GameResult.of(result, secondPlayer.name(), firstPlayer.name(), null);
+        var gameState = STRATEGY.get(Pair.of(actionOfFirstPlayer, actionOfSecondPlayer));
+        if (gameState == GameState.DRAW) {
+            return GameResult.of(gameState, List.of(firstPlayer.name(), secondPlayer.name()));
+        } else if (gameState == GameState.LOOSE) {
+            return GameResult.of(gameState, secondPlayer.name(), firstPlayer.name());
         } else {
-            return GameResult.of(result, firstPlayer.name(), secondPlayer.name(), null);
+            return GameResult.of(gameState, firstPlayer.name(), secondPlayer.name());
         }
     }
 
