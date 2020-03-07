@@ -9,11 +9,11 @@ import java.util.function.Supplier;
 @RequiredArgsConstructor(staticName = "of")
 public class NonRandomPlayerActionSimulator implements PlayerActionSimulator {
     private final String playerName;
-    private final Supplier<PlayerAction> actionGenerator;
+    private final Supplier<Integer> actionGenerator;
 
     @Override
     public PlayerAction generate() {
-        return actionGenerator.get();
+        return PlayerAction.from(actionGenerator.get());
     }
 
     @Override
