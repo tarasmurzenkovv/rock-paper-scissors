@@ -36,7 +36,7 @@ public class GameServiceTest {
         Mockito.when(fixedRangeRandomValueGenerator.get()).thenReturn(2);
         Assertions.assertThat(game.execute(firstPlayer, secondPlayer))
                 .isNotNull()
-                .hasFieldOrPropertyWithValue("gameState", GameState.DRAW)
+                .hasFieldOrPropertyWithValue("gameState", GameState.LOOSE)
                 .hasFieldOrPropertyWithValue("lostPlayer", "2")
                 .hasFieldOrPropertyWithValue("wonPlayer", "1")
                 .hasFieldOrPropertyWithValue("drawPlayers", null);

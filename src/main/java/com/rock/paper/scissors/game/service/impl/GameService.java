@@ -19,9 +19,10 @@ public class GameService implements Game {
         var actionOfFirstPlayer = firstPlayer.generate();
         var actionOfSecondPlayer = secondPlayer.generate();
         var result = STRATEGY.get(Pair.of(actionOfFirstPlayer, actionOfSecondPlayer));
-
         if (result == GameState.DRAW) {
             return GameResult.of(result, null, null, List.of(firstPlayer.name(), secondPlayer.name()));
+        } else if (result == GameState.LOOSE) {
+            return GameResult.of(result, secondPlayer.name(), firstPlayer.name(), null);
         }
         return null;
     }
