@@ -2,11 +2,12 @@ package com.rock.paper.scissors.game.service;
 
 import com.rock.paper.scissors.game.model.PlayerAction;
 import com.rock.paper.scissors.game.service.impl.NonRandomActionGenerator;
+import com.rock.paper.scissors.game.service.impl.RandomActionGenerator;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
-public class NonRandomActionGeneratorTest {
-    private final ActionGenerator sut = new NonRandomActionGenerator();
+public class RandomActionGeneratorTest {
+    private final ActionGenerator sut = new RandomActionGenerator();
 
     @Test
     public void shouldAlwaysReturnTheSameAction() {
