@@ -11,6 +11,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.util.List;
+
 public class GameServiceTest {
     private final Game game = new GameService();
     private final OnlyOneValueProvider actionGenerator = new OnlyOneValueProvider();
@@ -23,7 +25,10 @@ public class GameServiceTest {
         Mockito.when(fixedRangeRandomValueGenerator.get()).thenReturn(1);
         Assertions.assertThat(game.execute(firstPlayer, secondPlayer))
                 .isNotNull()
-                .isEqualTo(GameState.DRAW);
+                .hasFieldOrPropertyWithValue("gameState", GameState.DRAW)
+                .hasFieldOrPropertyWithValue("lostPlayer", null)
+                .hasFieldOrPropertyWithValue("wonPlayer", null)
+                .hasFieldOrPropertyWithValue("drawPlayers", List.of("1", "2"));
     }
 
     @Test
