@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 import java.util.function.Supplier;
 
 @RequiredArgsConstructor(staticName = "of")
-public class NonRandomPlayerActionSimulator implements PlayerActionSimulator {
+public class DetermenisticPlayerActionSimulator implements PlayerActionSimulator {
     private final String playerName;
     private final Supplier<Integer> actionGenerator;
 

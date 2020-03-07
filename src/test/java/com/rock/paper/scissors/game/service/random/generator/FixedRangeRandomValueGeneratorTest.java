@@ -1,14 +1,14 @@
 package com.rock.paper.scissors.game.service.random.generator;
 
-import com.rock.paper.scissors.game.service.impl.random.generators.RandomActionGenerator;
+import com.rock.paper.scissors.game.service.impl.random.generators.FixedRangeRandomValueGenerator;
 import org.assertj.core.api.Assertions;
 
 import org.junit.jupiter.api.RepeatedTest;
 
 import java.util.function.Supplier;
 
-public class RandomActionGeneratorTest {
-    private final Supplier<Integer> sut = new RandomActionGenerator();
+public class FixedRangeRandomValueGeneratorTest {
+    private final Supplier<Integer> sut = new FixedRangeRandomValueGenerator();
 
     @RepeatedTest(1000)
     public void shouldAlwaysReturnTheSameAction() {
