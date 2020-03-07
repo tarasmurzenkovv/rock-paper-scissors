@@ -21,4 +21,14 @@ public class GameResult {
     public static GameResult of(GameState gameState, String firstName, String secondName) {
         return GameResult.of(gameState, firstName, secondName, null);
     }
+
+    @Override
+    public String toString() {
+        return "GameResult{" +
+                "gameState=" + gameState +
+                ", lostPlayer='" + lostPlayer + '\'' +
+                ", wonPlayer='" + wonPlayer + '\'' +
+                ", drawPlayers=" + drawPlayers +
+                '}';
+    }
 }
