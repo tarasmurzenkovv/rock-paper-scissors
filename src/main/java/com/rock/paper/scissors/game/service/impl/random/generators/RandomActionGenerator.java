@@ -1,4 +1,4 @@
-package com.rock.paper.scissors.game.service.impl;
+package com.rock.paper.scissors.game.service.impl.random.generators;
 
 import com.rock.paper.scissors.game.model.PlayerAction;
 import com.rock.paper.scissors.game.service.ActionGenerator;

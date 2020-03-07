@@ -1,7 +1,8 @@
-package com.rock.paper.scissors.game.service;
+package com.rock.paper.scissors.game.service.random.generator;
 
 import com.rock.paper.scissors.game.model.PlayerAction;
-import com.rock.paper.scissors.game.service.impl.RandomActionGenerator;
+import com.rock.paper.scissors.game.service.ActionGenerator;
+import com.rock.paper.scissors.game.service.impl.random.generators.RandomActionGenerator;
 import org.assertj.core.api.Assertions;
 
 import org.junit.jupiter.api.RepeatedTest;
