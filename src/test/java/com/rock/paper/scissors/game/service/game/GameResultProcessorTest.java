@@ -36,8 +36,8 @@ public class GameResultProcessorTest {
         Assertions.assertThat(sut.process(GameState.LOOSE, "1", "2"))
                 .isNotNull()
                 .hasFieldOrPropertyWithValue("gameState", GameState.LOOSE)
-                .hasFieldOrPropertyWithValue("lostPlayer", "1")
-                .hasFieldOrPropertyWithValue("wonPlayer", "2")
+                .hasFieldOrPropertyWithValue("lostPlayer", "2")
+                .hasFieldOrPropertyWithValue("wonPlayer", "1")
                 .hasFieldOrPropertyWithValue("drawPlayers", null);
     }
 }
