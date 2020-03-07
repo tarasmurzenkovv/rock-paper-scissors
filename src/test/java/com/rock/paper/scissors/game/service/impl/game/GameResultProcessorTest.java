@@ -1,4 +1,4 @@
-package com.rock.paper.scissors.game.service.game;
+package com.rock.paper.scissors.game.service.impl.game;
 
 import com.rock.paper.scissors.game.model.GameState;
 import com.rock.paper.scissors.game.service.GameResultProcessor;
