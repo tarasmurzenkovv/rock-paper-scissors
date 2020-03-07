@@ -1,11 +1,12 @@
 package com.rock.paper.scissors.game.service.impl.random.generators;
 
 import com.rock.paper.scissors.game.model.PlayerAction;
-import com.rock.paper.scissors.game.service.ActionGenerator;
 
-public class NonRandomActionGenerator implements ActionGenerator {
+import java.util.function.Supplier;
+
+public class NonRandomActionGenerator implements Supplier<PlayerAction> {
     @Override
-    public PlayerAction generate() {
+    public PlayerAction get() {
         return PlayerAction.ROCK;
     }
 }

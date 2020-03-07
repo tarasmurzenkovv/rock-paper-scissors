@@ -8,7 +8,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class NonRandomPlayerActionSimulatorTest {
-    PlayerActionSimulator sut = new NonRandomPlayerActionSimulator("Player 1", new NonRandomActionGenerator());
+    private static final String PLAYER_NAME = "Player 1";
+    private final PlayerActionSimulator sut = NonRandomPlayerActionSimulator.of(PLAYER_NAME, new NonRandomActionGenerator());
 
     @Test
     public void shouldReturnRockActionForNonRandomActionGenerator() {
@@ -19,6 +20,9 @@ public class NonRandomPlayerActionSimulatorTest {
 
     @Test
     public void shouldGetPlayerName() {
-        Assertions.assertThat(sut.name()).isNotNull().isEqualTo("Player 1");
+        Assertions.assertThat(sut.name())
+                .isNotNull()
+                .isNotBlank()
+                .isEqualTo(PLAYER_NAME);
     }
 }
