@@ -7,6 +7,11 @@ import com.rock.paper.scissors.game.service.PlayerActionSimulator;
 public class GameService implements Game {
     @Override
     public GameState execute(PlayerActionSimulator firstPlayer, PlayerActionSimulator secondPlayer) {
+        var actionOfFirstPlayer = firstPlayer.generate();
+        var actionOfSecondPlayer = secondPlayer.generate();
+        if (actionOfFirstPlayer == actionOfSecondPlayer) {
+            return GameState.DRAW;
+        }
         return null;
     }
 }

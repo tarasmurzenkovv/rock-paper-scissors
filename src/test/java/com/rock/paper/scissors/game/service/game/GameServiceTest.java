@@ -23,6 +23,6 @@ public class GameServiceTest {
         Mockito.when(fixedRangeRandomValueGenerator.get()).thenReturn(1);
         Assertions.assertThat(game.execute(firstPlayer, secondPlayer))
                 .isNotNull()
-                .hasFieldOrPropertyWithValue("gameState", GameState.DRAW);
+                .isEqualTo(GameState.DRAW);
     }
 }
